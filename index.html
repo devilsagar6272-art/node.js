@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Form</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<h2>Add User</h2>
+<form id="myform">
+  <input type="text" name="name" id="name" placeholder="Enter Name" required><br><br>
+  <input type="email" name="email"  id="email" placeholder="Enter Email" required><br><br>
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>
+<script>
+    $('#myform').on('submit',function(e){
+        e.preventDefault();
+        name = $("#name").val();
+        email = $("#email").val();
+    $.ajax({
+     url:'/save',
+     type:'post',
+     data:{name:name,email:email},
+     success:function(data)
+     {
+       alert(data);
+     },
+     error:function(e)
+     {
+        console.log(e);
+     }
+    });
+    });
+</script>
